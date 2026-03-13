@@ -1,10 +1,10 @@
-# terraform-aws-secure-vpc
+# 📦 terraform-aws-secure-vpc
 
 Terraform module to provision a highly available VPC on AWS with public and private subnets distributed across multiple Availability Zones, Internet Gateway, and one NAT Gateway per AZ.
 
 This module is designed for reuse through the HashiCorp Registry and exposes a small, objective interface for teams that need a secure baseline network for workloads running in private subnets.
 
-## Features
+## ⚙️ Features
 
 - Creates a VPC with DNS support and DNS hostnames enabled
 - Creates public and private subnets across multiple Availability Zones
@@ -14,7 +14,7 @@ This module is designed for reuse through the HashiCorp Registry and exposes a s
 - Applies consistent tags to all resources
 - Validates CIDRs, Availability Zone uniqueness, and minimum subnet/AZ count
 
-## Architecture
+## 🏗️ Architecture
 
 The module creates:
 
@@ -29,7 +29,7 @@ The module creates:
 
 Where `N` is the number of Availability Zones provided in `var.azs`.
 
-## Usage
+## 🚀 Quick Start
 
 ```hcl
 module "secure_vpc" {
@@ -46,15 +46,13 @@ module "secure_vpc" {
 
 ## Requirements and Assumptions
 
-- Terraform `>= 1.3.0`
-- AWS provider `~> 6.0`
 - At least 2 Availability Zones must be provided
 - `azs`, `public_subnet_cidrs`, and `private_subnet_cidrs` must have the same length
 - Availability Zones must be unique
 - Each subnet CIDR and the VPC CIDR must be valid CIDR blocks
 - `name_prefix` must be 32 characters or fewer
 
-## Tagging
+## 🏷️ Tagging
 
 All resources receive these baseline tags:
 
@@ -64,7 +62,7 @@ All resources receive these baseline tags:
 
 In addition, each resource receives a specific `Name` tag, and subnets also receive a `Tier` tag with value `public` or `private`.
 
-## Outputs
+## 📤 Outputs
 
 The module exposes the values most consumers need to integrate compute, databases, and other network-attached resources:
 
@@ -73,14 +71,14 @@ The module exposes the values most consumers need to integrate compute, database
 - Private subnet IDs
 - NAT Gateway IDs keyed by Availability Zone
 
-## Operational Notes
+## 📄 Operational Notes
 
 - This module creates one NAT Gateway per Availability Zone to improve availability and keep private subnet routing local to each AZ.
 - NAT Gateways and Elastic IPs incur AWS charges. Cost scales with the number of Availability Zones used.
 - Public subnets are created with `map_public_ip_on_launch = true`.
 - Private subnets do not assign public IPs on launch.
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
