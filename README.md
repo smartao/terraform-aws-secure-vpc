@@ -44,7 +44,7 @@ module "secure_vpc" {
 }
 ```
 
-## Requirements and Assumptions
+## 📑 Requirements and Assumptions
 
 - At least 2 Availability Zones must be provided
 - `azs`, `public_subnet_cidrs`, and `private_subnet_cidrs` must have the same length
