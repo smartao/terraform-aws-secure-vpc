@@ -44,6 +44,20 @@ module "secure_vpc" {
 }
 ```
 
+## 📘 Example Usage
+
+If you want to test the module from this repository checkout, see the local example in [examples/simple.tf](examples/simple.tf).
+
+You can run it with:
+
+```bash
+cd examples
+terraform init
+terraform plan
+```
+
+Additional notes for the example are documented in [examples/README.md](examples/README.md).
+
 ## 📑 Requirements and Assumptions
 
 - At least 2 Availability Zones must be provided
