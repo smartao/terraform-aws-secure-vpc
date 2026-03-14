@@ -67,6 +67,11 @@ variable "name_prefix" {
   type        = string
 
   validation {
+    condition     = length(trimspace(var.name_prefix)) > 0
+    error_message = "VALIDATION: name_prefix must not be empty."
+  }
+
+  validation {
     condition     = length(var.name_prefix) <= 32
     error_message = "VALIDATION: name_prefix must be <= 32 characters."
   }
