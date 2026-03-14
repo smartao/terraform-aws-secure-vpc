@@ -37,6 +37,7 @@ override.tf.json
 terraform.rc
 
 ## Sergei additional ignores 
+*.lock.hcl
 *.txt
 *.log
 local
