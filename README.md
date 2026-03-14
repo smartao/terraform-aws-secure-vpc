@@ -78,6 +78,25 @@ The module exposes the values most consumers need to integrate compute, database
 - Public subnets are created with `map_public_ip_on_launch = true`.
 - Private subnets do not assign public IPs on launch.
 
+## 🧪 Tests
+
+This repository includes simple native Terraform tests in [tests/basic.tftest.hcl](tests/basic.tftest.hcl).
+
+Run them with:
+
+```bash
+terraform init
+terraform test
+```
+
+The test suite covers:
+
+- Successful planning with a valid two-AZ configuration
+- Minimum public subnet validation
+- Minimum private subnet validation
+- Duplicate Availability Zone validation
+- Mismatched Availability Zone and private subnet list lengths
+
 ## 📜 License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
