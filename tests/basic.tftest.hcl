@@ -67,3 +67,23 @@ run "fails_when_azs_and_private_subnets_have_different_lengths" {
 
   expect_failures = [aws_vpc.main]
 }
+
+run "fails_when_public_subnet_is_outside_vpc" {
+  command = plan
+
+  variables {
+    public_subnet_cidrs = ["10.1.1.0/24", "10.0.2.0/24"]
+  }
+
+  expect_failures = [aws_vpc.main]
+}
+
+run "fails_when_subnets_overlap" {
+  command = plan
+
+  variables {
+    private_subnet_cidrs = ["10.0.1.0/24", "10.0.102.0/24"]
+  }
+
+  expect_failures = [aws_vpc.main]
+}
