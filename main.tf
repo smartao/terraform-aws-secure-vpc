@@ -28,6 +28,21 @@ resource "aws_vpc" "main" {
       condition     = length(distinct(var.azs)) == length(var.azs)
       error_message = "VALIDATION: azs must not contain duplicate Availability Zones."
     }
+
+    precondition {
+      condition     = local.public_subnets_within_vpc
+      error_message = "VALIDATION: All public subnet CIDRs must be contained within vpc_cidr."
+    }
+
+    precondition {
+      condition     = local.private_subnets_within_vpc
+      error_message = "VALIDATION: All private subnet CIDRs must be contained within vpc_cidr."
+    }
+
+    precondition {
+      condition     = length(local.overlapping_subnet_pairs) == 0
+      error_message = "VALIDATION: Subnet CIDRs must not overlap."
+    }
   }
 
   tags = merge(local.common_tags, {
