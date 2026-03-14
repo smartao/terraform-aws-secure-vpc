@@ -5,18 +5,20 @@ locals {
     Module      = "network"
   }
 
+  public_subnet_count  = min(length(var.azs), length(var.public_subnet_cidrs))
+  private_subnet_count = min(length(var.azs), length(var.private_subnet_cidrs))
 
   public_subnets = {
-    for idx, cidr in var.public_subnet_cidrs : var.azs[idx] => {
+    for idx in range(local.public_subnet_count) : var.azs[idx] => {
       az   = var.azs[idx]
-      cidr = cidr
+      cidr = var.public_subnet_cidrs[idx]
     }
   }
 
   private_subnets = {
-    for idx, cidr in var.private_subnet_cidrs : var.azs[idx] => {
+    for idx in range(local.private_subnet_count) : var.azs[idx] => {
       az   = var.azs[idx]
-      cidr = cidr
+      cidr = var.private_subnet_cidrs[idx]
     }
   }
 }
