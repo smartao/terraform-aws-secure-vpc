@@ -68,6 +68,46 @@ run "fails_when_azs_and_private_subnets_have_different_lengths" {
   expect_failures = [aws_vpc.main]
 }
 
+run "fails_when_azs_and_public_subnets_have_different_lengths" {
+  command = plan
+
+  variables {
+    public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  }
+
+  expect_failures = [aws_vpc.main]
+}
+
+run "fails_when_vpc_cidr_is_invalid" {
+  command = plan
+
+  variables {
+    vpc_cidr = "10.0.0.0"
+  }
+
+  expect_failures = [var.vpc_cidr]
+}
+
+run "fails_when_public_subnet_cidr_is_invalid" {
+  command = plan
+
+  variables {
+    public_subnet_cidrs = ["10.0.1.0", "10.0.2.0/24"]
+  }
+
+  expect_failures = [var.public_subnet_cidrs]
+}
+
+run "fails_when_private_subnet_cidr_is_invalid" {
+  command = plan
+
+  variables {
+    private_subnet_cidrs = ["10.0.101.0", "10.0.102.0/24"]
+  }
+
+  expect_failures = [var.private_subnet_cidrs]
+}
+
 run "fails_when_public_subnet_is_outside_vpc" {
   command = plan
 
