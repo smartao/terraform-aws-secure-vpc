@@ -12,7 +12,7 @@ This module is designed for reuse through the HashiCorp Registry and exposes a s
 - Creates one Elastic IP and one NAT Gateway per public subnet/AZ for private subnet egress
 - Creates public and private route tables and associates them with the correct subnets
 - Applies consistent tags to all resources
-- Validates CIDRs, Availability Zone uniqueness, and minimum subnet/AZ count
+- Validates CIDRs, Availability Zone uniqueness, minimum subnet/AZ count, subnet containment within the VPC, and non-overlapping subnets
 
 ## 🏗️ Architecture
 
@@ -64,6 +64,10 @@ Additional notes for the example are documented in [examples/README.md](examples
 - `azs`, `public_subnet_cidrs`, and `private_subnet_cidrs` must have the same length
 - Availability Zones must be unique
 - Each subnet CIDR and the VPC CIDR must be valid CIDR blocks
+- All public and private subnet CIDRs must be contained within `vpc_cidr`
+- Public and private subnet CIDRs must not overlap
+- `environment` must not be empty
+- `name_prefix` must not be empty
 - `name_prefix` must be 32 characters or fewer
 
 ## 🏷️ Tagging
@@ -110,6 +114,12 @@ The test suite covers:
 - Minimum private subnet validation
 - Duplicate Availability Zone validation
 - Mismatched Availability Zone and private subnet list lengths
+- Mismatched Availability Zone and public subnet list lengths
+- Invalid VPC CIDR validation
+- Invalid public subnet CIDR validation
+- Invalid private subnet CIDR validation
+- Public subnet CIDR outside the VPC CIDR
+- Overlapping subnet CIDR validation
 
 ## 📜 License
 
