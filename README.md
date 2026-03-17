@@ -85,8 +85,8 @@ In addition, each resource receives a specific `Name` tag, and subnets also rece
 The module exposes the values most consumers need to integrate compute, databases, and other network-attached resources:
 
 - VPC ID and CIDR block
-- Public subnet IDs
-- Private subnet IDs
+- Public subnet IDs and CIDR block
+- Private subnet IDs and CIDR block
 - NAT Gateway IDs keyed by Availability Zone
 
 ## 📄 Operational Notes
@@ -174,7 +174,9 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_nat_gateway_ids"></a> [nat\_gateway\_ids](#output\_nat\_gateway\_ids) | Map of NAT Gateway IDs by Availability Zone |
+| <a name="output_private_subnet_cidr_blocks"></a> [private\_subnet\_cidr\_blocks](#output\_private\_subnet\_cidr\_blocks) | List of private subnet CIDR blocks |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | List of private subnet IDs |
+| <a name="output_public_subnet_cidr_blocks"></a> [public\_subnet\_cidr\_blocks](#output\_public\_subnet\_cidr\_blocks) | List of public subnet CIDR blocks |
 | <a name="output_public_subnet_ids"></a> [public\_subnet\_ids](#output\_public\_subnet\_ids) | List of public subnet IDs |
 | <a name="output_vpc_cidr_block"></a> [vpc\_cidr\_block](#output\_vpc\_cidr\_block) | The CIDR block of the VPC |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC |
