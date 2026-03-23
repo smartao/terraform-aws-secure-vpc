@@ -1,3 +1,5 @@
+![license](https://img.shields.io/badge/License-MIT-orange?style=flat-square)
+
 # 📦 terraform-aws-secure-vpc
 
 Terraform module to provision a highly available VPC on AWS with public and private subnets distributed across multiple Availability Zones, Internet Gateway, and one NAT Gateway per AZ.
