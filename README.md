@@ -48,17 +48,17 @@ module "secure_vpc" {
 
 ## 📘 Example Usage
 
-If you want to test the module from this repository checkout, see the local example in [examples/simple.tf](examples/simple.tf).
+If you want to test the module from this repository checkout, see the local example in [examples/simple/simple.tf](examples/simple/simple.tf).
 
 You can run it with:
 
 ```bash
-cd examples
+cd examples/simple
 terraform init
 terraform plan
 ```
 
-Additional notes for the example are documented in [examples/README.md](examples/README.md).
+Additional notes for the example are documented in [examples/simple/README.md](examples/simple/README.md).
 
 ## 📑 Requirements and Assumptions
 
@@ -87,8 +87,8 @@ In addition, each resource receives a specific `Name` tag, and subnets also rece
 The module exposes the values most consumers need to integrate compute, databases, and other network-attached resources:
 
 - VPC ID and CIDR block
-- Public subnet IDs and CIDR block
-- Private subnet IDs and CIDR block
+- Public subnet IDs and CIDR blocks
+- Private subnet IDs and CIDR blocks
 - NAT Gateway IDs keyed by Availability Zone
 
 ## 📄 Operational Notes

@@ -22,7 +22,7 @@ locals {
 }
 
 module "secure_vpc" {
-  source = "../"
+  source = "../../"
 
   name_prefix          = "example-basic"
   environment          = "dev"
